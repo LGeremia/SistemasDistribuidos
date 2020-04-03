@@ -1,24 +1,19 @@
 package projeto;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Set;
 
 public class No {
-	int chave;
-	String valor;
-	int Prox;
-	Boolean Ativo;
-	private Map<Integer, String> musicas;
-	List<Map> dependentes;
+	private int chave;
+	private String valor;
+	private int prox;
+	private Boolean ativo;
+	private Map<Integer, String> dependentes;
 	
-	public List<Map> getDependentes() {
+	public Map<Integer, String> getDependentes() {
 		return dependentes;
 	}
 
-	public void setDependentes(List<Map> dependentes) {
+	public void setDependentes(Map<Integer, String> dependentes) {
 		this.dependentes = dependentes;
 	}
 
@@ -39,32 +34,28 @@ public class No {
 	}
 
 	public int getProx() {
-		return Prox;
+		return prox;
 	}
 
 	public void setProx(int prox) {
-		Prox = prox;
+		this.prox = prox;
 	}
 
 	public Boolean getAtivo() {
-		return Ativo;
+		return ativo;
 	}
 
 	public void setAtivo(Boolean ativo) {
-		Ativo = ativo;
-	}
-
-	public Map<Integer, String> getMusicas() {
-		return musicas;
-	}
-
-	public void setMusicas(Map<Integer, String> musicas) {
-		this.musicas = musicas;
+		this.ativo = ativo;
 	}
 
 	public No() {
-		musicas = new HashMap<Integer, String>();
+		this.chave = -1;
+		this.valor = new String();
+		this.dependentes = new HashMap<>();
 		this.montarPlaylist();
+		this.ativo = false;
+		this.prox = -1;
 	}
 	
 	public void montarPlaylist() {
