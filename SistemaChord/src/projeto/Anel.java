@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 
 public class Anel {
@@ -46,30 +47,73 @@ public class Anel {
                 }
             }
         }
-        System.out.println("Vetor organizado:");
-        for(h = 0; h<r.size(); h++){
-            System.out.println(" "+r.get(h));
-        }
 
         i = 0;
         h = r.size();
         aux = 0;
         //gerar os nós do anel
+        
+        Map<Integer, String> teste = new HashMap<>();
+        teste.put(15, "joao");
 		for(String m: musicas){
 			no = new No();
 			no.setChave(i);
 			no.setValor(m);
 			if(r.contains(i)&&(aux==(h-1))) {
+				System.out.println(no.getChave()+" ativo");
+				no.setAtivo(true);
 				no.setProx(r.get(0));
 			}else if(r.contains(i)&&(aux<h)) {
+				System.out.println(no.getChave()+" ativo");
 				no.setAtivo(true);
 				no.setProx(r.get(aux+1));
 				aux++;
-			} 
-			System.out.println(i + "//" + no.getProx());
+			}
 			nos.add(no);
 			i++;
         }
+		
+		Map<Integer, String> dependentes= new HashMap<>();
+		h = 0;
+		aux = 0;
+		i = r.get(h)-1;
+		do {
+			if(i==-1) {
+				i = nos.size()-1;
+			}else if(i == r.get(0)) {
+				nos.get(r.get(h)).setDependentes(dependentes);
+				dependentes.clear();
+				break;
+			}
+			System.out.println(nos.get(i).getChave()+"--"+nos.get(i).getDependentes());
+			if(!nos.get(i).getAtivo()) {
+				int key = nos.get(i).getChave();
+				String value = nos.get(i).getValor();
+				dependentes.put(key, value);
+			}else if(nos.get(i).getAtivo()&&(aux==0)){
+				nos.get(r.get(h)).setDependentes(dependentes);
+				dependentes.clear();
+				int key = nos.get(i).getChave();
+				String value = nos.get(i).getValor();
+				dependentes.put(key, value);
+				h = r.size() - 1;
+				aux = 1;
+			}else if(nos.get(i).getAtivo()&&(h!=0)) {
+				nos.get(r.get(h)).setDependentes(dependentes);
+				dependentes.clear();
+				int key = nos.get(i).getChave();
+				String value = nos.get(i).getValor();
+				dependentes.put(key, value);
+				h--;
+			}
+			i--;
+		}while(true);
+		/*
+		for(No teste : nos) {
+			System.out.println(nos.get(i).getChave()+"--"+nos.get(i).getDependentes());
+			i++;
+		}*/
+		
 	}
 
 }

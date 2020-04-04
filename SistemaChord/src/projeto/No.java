@@ -13,8 +13,8 @@ public class No {
 		return dependentes;
 	}
 
-	public void setDependentes(Map<Integer, String> dependentes) {
-		this.dependentes = dependentes;
+	public void setDependentes(Map<Integer, String> dependente) {
+		this.dependentes = dependente;
 	}
 
 	public int getChave() {
