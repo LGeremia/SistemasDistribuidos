@@ -129,6 +129,7 @@ public class Anel {
 					System.out.println("Esse no ja e ativo");
 				}else if (p >= 0 && p < 40) {
 					r.add(p);
+					nos = new ArrayList<No>();	
 					aux = 0;
 					h = 0;
 			        for(h = 0; h<r.size(); h++){
@@ -210,6 +211,7 @@ public class Anel {
 				if(r.contains(p)){
 					r.remove(p);
 					nos.get(p).setDependentes(null);
+					nos = new ArrayList<No>();	
 					aux = 0;
 					h = 0;
 			        for(h = 0; h<r.size(); h++){
