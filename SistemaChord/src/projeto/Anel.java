@@ -111,9 +111,8 @@ public class Anel {
 			}
 			i--;
 		}while(true);
-		
+		//principal
 		int p;
-		String valor;
 		do {
 			System.out.println("O que deseja fazer:");
 			System.out.println("1-Ver os nos ativos  2-Adicionar Ativo  3-Remover Ativo  4-Consultar dependentes  5-Sair");
