@@ -112,10 +112,11 @@ public class Anel {
 			i--;
 		}while(true);
 		//principal
+		String valor;
 		int p;
 		do {
 			System.out.println("O que deseja fazer:");
-			System.out.println("1-Ver os nos ativos  2-Adicionar Ativo  3-Remover Ativo  4-Consultar dependentes  5-Sair");
+			System.out.println("1-Ver os nos ativos  2-Adicionar Ativo  3-Remover Ativo  4-Consultar dependentes  5-Buscar Musica  6-Sair");
 			p = s.nextInt();
 			if(p == 1){
 				for(Integer e: r) {
@@ -297,6 +298,18 @@ public class Anel {
 					System.out.println("No invalido como ativo");
 				}
 			}else if(p == 5) {
+				System.out.println("Qual a musica a ser buscada?");
+				valor = s.next();
+				for(Integer w: r) {
+					if(nos.get(w).getDependentes().containsValue(valor)){
+						for(Map.Entry<Integer, String> y: nos.get(w).getDependentes().entrySet()) {
+							if(((String)y.getValue()).equals(valor)){
+								System.out.println("A musica "+ valor + " está no nó "+y.getKey());
+							}
+						}
+					}
+				}
+			}else if(p == 6){
 				break;
 			}else {
 				System.out.println("Opçao invalida");
